@@ -36,7 +36,8 @@ The response is validated against a strict Zod schema before being returned to t
 promptr/
 ├── src/
 │   ├── index.ts                          # Express app entry point
-│   ├── ai-client.ts                      # OpenAI client & prompt template
+    ├── clients/
+│   │   └── ai-client.ts                  # OpenAI client & prompt template
 │   ├── controllers/
 │   │   └── ai-controller.ts              # Route handler
 │   ├── types/
@@ -44,10 +45,16 @@ promptr/
 │   └── validators/
 │       ├── ai-model-response-validator.ts # Zod schema for AI output
 │       └── request-input-validator.ts    # Zod middleware for request body
-├── env.sample                            # Example environment variables
+├── .env                                  # Environment variables (local, git-ignored)
+├── .env.sample                           # Example environment variables template
+├── .prettierrc.json                      # Code formatter configuration
+├── .prettierignore                       # Files to exclude from formatting
+├── .gitignore                            # Git ignore rules
+├── env.sample                            # Legacy env template (deprecated)
 ├── eslint.config.cjs                     # ESLint configuration
 ├── tsconfig.json                         # TypeScript configuration
-└── package.json
+├── package.json                          # Project metadata and dependencies
+└── README.md                             # This file
 ```
 
 ---
