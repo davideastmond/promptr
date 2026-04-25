@@ -292,3 +292,7 @@ Used to improve the cleanliness of the raw string returned by the model, making 
 > "Generate README content for this project."
 
 Used to produce the initial draft of this README file.
+
+### 5. Generate ideas for improvements and future use cases
+
+> "What are some contingencies/use-cases I could account for in terms of the input text of the request to OpenAI and associated outputs? In the readme Add a few brief use cases I could address in future iterations of this app."
