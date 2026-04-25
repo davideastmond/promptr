@@ -212,7 +212,7 @@ Recommended stack:
 
 ## Future Input/Output Use Cases
 
-Below are practical contingencies and product use-cases you could support in future iterations.
+Below are practical contingencies and product use-cases we could support in future iterations.
 
 ### 1. Very long input text (token/size limits)
 
