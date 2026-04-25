@@ -13,6 +13,7 @@ A lightweight REST API built with Node.js, Express, and TypeScript that accepts 
 - [Environment Variables](#environment-variables)
 - [Running the App](#running-the-app)
 - [API Reference](#api-reference)
+- [Potential Improvements](#potential-improvements)
 - [AI Prompts Used](#ai-prompts-used)
 
 ---
@@ -156,6 +157,48 @@ Content-Type: application/json
 | `400`  | Missing or empty `text` field in the request body |
 | `400`  | AI response did not match the expected schema     |
 | `500`  | Unexpected error while processing the AI response |
+
+---
+
+## Potential Improvements
+
+### 1. Return typed JSON (not a JSON string) from the controller
+
+Right now the controller parses and validates the AI response, but still returns the original string. A stronger approach is to return the parsed object directly so clients always receive a proper JSON object.
+
+Why this helps:
+
+- Improves API consistency and developer experience for API consumers
+- Avoids ambiguity when clients parse the response
+- Lets TypeScript and Zod work together end-to-end on the response payload
+
+Suggested implementation:
+
+- Parse once: `const parsed = JSON.parse(aiResponse)`
+- Validate parsed object with Zod
+- Return `res.json(parsed)` instead of `res.json(aiResponse)`
+
+### 2. Add automated tests for validators and `/prompt` endpoint
+
+The project currently has no tests. Adding a minimal test suite would make refactors safer and catch regressions early.
+
+Why this helps:
+
+- Ensures request validation and error handling keep working as expected
+- Verifies AI response schema enforcement behavior
+- Increases confidence before deployment or dependency upgrades
+
+Suggested test coverage:
+
+- `request-input-validator`: missing `text`, empty `text`, valid payload
+- Controller behavior: valid AI output, malformed AI output, provider error path
+- Endpoint integration test: `POST /prompt` success and 400/500 cases
+
+Recommended stack:
+
+- `vitest` for test runner
+- `supertest` for HTTP endpoint tests
+- Mock the OpenAI client to keep tests fast and deterministic
 
 ---
 
