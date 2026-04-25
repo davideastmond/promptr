@@ -14,6 +14,7 @@ A lightweight REST API built with Node.js, Express, and TypeScript that accepts 
 - [Running the App](#running-the-app)
 - [API Reference](#api-reference)
 - [Potential Improvements](#potential-improvements)
+- [Future Input/Output Use Cases](#future-inputoutput-use-cases)
 - [AI Prompts Used](#ai-prompts-used)
 
 ---
@@ -199,6 +200,42 @@ Recommended stack:
 - `vitest` for test runner
 - `supertest` for HTTP endpoint tests
 - Mock the OpenAI client to keep tests fast and deterministic
+
+---
+
+## Future Input/Output Use Cases
+
+Below are practical contingencies and product use-cases you could support in future iterations.
+
+### 1. Very long input text (token/size limits)
+
+Use case: users paste meeting transcripts, reports, or long email threads.
+
+Potential handling:
+
+- Add max input length checks with a clear validation message
+- Chunk large text and summarize in stages, then merge final output
+- Return metadata such as `wasTruncated` or `chunksProcessed`
+
+### 2. Low-quality or ambiguous input text
+
+Use case: text is too short, noisy, or lacks actionable detail.
+
+Potential handling:
+
+- Add minimum quality checks (length, word count, repeated tokens)
+- Return structured fallback output with a reason field
+- Ask for clarification in a safe, deterministic format
+
+### 3. Multi-language input and output
+
+Use case: users submit text in one language and want summary/action items in another.
+
+Potential handling:
+
+- Detect input language and return it in response metadata
+- Add optional `outputLanguage` in request body
+- Validate that output language constraints are followed
 
 ---
 
