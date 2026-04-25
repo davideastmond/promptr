@@ -25,7 +25,7 @@ with this structure:
   ]
 }
 
-Return only the JSON response without any additional text or explanations. Remove formatting and line breaks.
+Return only the JSON response without any additional text or explanations. Remove formatting and line breaks from your response.
 
 Text to analyze:
 ${input}
