@@ -2,6 +2,8 @@
 
 A lightweight REST API built with Node.js, Express, and TypeScript that accepts free-form text and uses the OpenAI API to return a structured summary and a list of key action items.
 
+This project was generated with the help of AI assistants.
+
 ---
 
 ## Table of Contents
@@ -208,13 +210,7 @@ Recommended stack:
 - `supertest` for HTTP endpoint tests
 - Mock the OpenAI client to keep tests fast and deterministic
 
----
-
-## Future Input/Output Use Cases
-
-Below are practical contingencies and product use-cases we could support in future iterations.
-
-### 1. Very long input text (token/size limits)
+### 3. Very long input text (token/size limits)
 
 Use case: users paste meeting transcripts, reports, or long email threads.
 
@@ -224,7 +220,7 @@ Potential handling:
 - Chunk large text and summarize in stages, then merge final output
 - Return metadata such as `wasTruncated` or `chunksProcessed`
 
-### 2. Low-quality or ambiguous input text
+### 4. Low-quality or ambiguous input text
 
 Use case: text is too short, noisy, or lacks actionable detail.
 
@@ -234,7 +230,7 @@ Potential handling:
 - Return structured fallback output with a reason field
 - Ask for clarification in a safe, deterministic format
 
-### 3. Multi-language input and output
+### 5. Multi-language input and output
 
 Use case: users submit text in one language and want summary/action items in another.
 
